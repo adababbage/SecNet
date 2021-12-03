@@ -48,7 +48,7 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: pwsh
         run: |
-            .\.sonar\scanner\dotnet-sonarscanner begin /k:"adababbage_secnet" /o:"devscan" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+            .\.sonar\scanner\dotnet-sonarscanner begin /k:"adababbage_SecNet" /o:"devscan" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
       - name: Install dependencies
         run: dotnet restore
       - name: Build core project
