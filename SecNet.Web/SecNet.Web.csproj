@@ -5,6 +5,10 @@
     <UserSecretsId>64eefafb-c710-4285-a0ce-e37e9a19d449</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <SonarQubeTestProject>false</SonarQubeTestProject>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0" />
   </ItemGroup>
