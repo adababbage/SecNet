@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Reflected XSS";
+}
+
+<h1>Reflected XSS</h1>
+<br />
+<div>
+    <div>
+        <form asp-action="Reflected" method="post">
+            @Html.AntiForgeryToken()
+            <label>Please enter your name:</label>
+            <input name="untrustedData" id="untrustedData" />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>

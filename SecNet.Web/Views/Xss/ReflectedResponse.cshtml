@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Reflected XSS";
+}
+
+<h1>Reflected XSS Response</h1>
+<div>
+    <h4>Untrusted data has been passed through without any checks or html encoding of the output</h4>
+</div>
+<br />
+<div>
+    The untrusted data passed through is: @Html.Raw(ViewBag.UntrustedData)
+</div>
