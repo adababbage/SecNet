@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Get User";
+}
+
+<h1>User Search</h1>
+<br />
+<div>
+    <form asp-action="SqlWithDataAdapter" method="post">
+        @Html.AntiForgeryToken()
+        <label>Enter users first name:</label>
+        <input name="firstName" id="firstName" />
+        <br />
+        <label>Enter users last name:</label>
+        <input name="lastName" id="lastName" />
+        <br />
+        <input type="submit" value="Search" />
+    </form>
+</div>

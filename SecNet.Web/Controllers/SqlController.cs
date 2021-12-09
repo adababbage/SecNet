@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using SecNet.Web.ViewModels;
 using System.Collections.Generic;
+using System.Data;
 
 namespace SecNet.Web.Controllers
 {
@@ -44,6 +45,36 @@ namespace SecNet.Web.Controllers
             }
 
             return View("GetUserUsingCommandResult", userResults);
+        }
+
+        [HttpGet]
+        public IActionResult SqlWithDataAdapter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SqlWithDataAdapter(string firstName, string lastName)
+        {
+            SqlConnection connection = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
+
+            string query = "SELECT * FROM Users where FirstName='" + firstName + "'and LastName='" + lastName + "' ";
+
+            var adapter = new SqlDataAdapter(query, connection);
+
+            var dataTable = new DataTable();
+            adapter.Fill(dataTable);
+
+            if (dataTable.Rows.Count == 0) return View();
+
+            List<UserDetailViewModel> userResults = new List<UserDetailViewModel>();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                userResults.Add(new UserDetailViewModel { FirstName = dataTable.Rows[i]["FirstName"].ToString(), LastName = dataTable.Rows[i]["LastName"].ToString() });
+            }
+            
+            return View("SqlWithDataAdapterResult", userResults);
         }
     }
 }
