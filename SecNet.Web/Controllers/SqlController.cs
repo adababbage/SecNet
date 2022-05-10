@@ -26,7 +26,7 @@ namespace SecNet.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult GetUserUsingCommand(string firstName)
         {
-            //This line includes a sql injection point.
+            //This line includes a sql injection point
             var unsafeQuery = $"Select firstName, LastName from users where firstname = '{firstName}'";
 
             SqlConnection conn = new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
